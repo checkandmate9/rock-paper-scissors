@@ -8,6 +8,7 @@ let result;
 let playerWins = 0;
 let computerWins = 0;
 let gameOver = false;
+let restartBtn = document.getElementById("restartBtn");
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
     if(!gameOver){
@@ -26,12 +27,23 @@ choiceBtns.forEach(button => button.addEventListener("click", () => {
     if(playerWins === 3 || computerWins === 3) {
         gameOver = true;
         resultText.textContent = playerWins === 3 ? "Game Over! You Won!" : "Game Over! Computer Won!"
+        restartBtn.style.visibility = "visible";
     }
+    
   }
-
-  console.log(playerWins);
-  console.log(computerWins);
 }));
+restartBtn.style.visibility = "hidden";
+
+restartBtn.addEventListener("click", () => {
+    playerWins = 0;
+    computerWins = 0;
+    gameOver = false;
+    playerText.textContent = "Player: ";
+    computerText.textContent = "Computer: ";
+    resultText.textContent = "Result: ";
+    restartBtn.style.visibility = "hidden"; 
+});
+
 
 
 function computerTurn(){

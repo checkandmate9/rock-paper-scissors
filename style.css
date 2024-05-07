@@ -2,7 +2,7 @@
     font-family: 'Brush Script MT', curive;
     border: 3px solid;
     border-radius: 25px;
-    padding: 10px;
+    padding: 30px;
     background-color: bisque;
     text-align: center;
 }
@@ -15,4 +15,18 @@
 }
 #computerText{
     color: red;
+}
+#restartContainer {
+    text-align: center;
+}
+
+#restartBtn {
+    background-color: #4CAF50; 
+    color: white;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none;
+    cursor: pointer; 
+    border-radius: 5px; 
+    margin-top: 10px; 
 }
