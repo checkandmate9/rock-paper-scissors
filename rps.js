@@ -5,14 +5,32 @@ const choiceBtns = document.querySelectorAll(".choiceBtn");
 let player;
 let computer;
 let result;
+let playerWins = 0;
+let computerWins = 0;
+let gameOver = false;
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
-    
+    if(!gameOver){
     player = button.textContent;
     computerTurn();
-    playerText.textContent = `Player: ${player}`;
-    computerText.textContent = `Computer: ${computer}`;
-    resultText.textContent = checkWinner();
+    let result = checkWinner()
+    if (result === "You Win!"){
+        playerWins++
+    }
+    else if (result === "You Lose!"){
+        computerWins++
+    }
+    playerText.textContent = `Player: ${player}, ${playerWins}`;
+    computerText.textContent = `Computer: ${computer}, ${computerWins}`;
+    resultText.textContent = result;
+    if(playerWins === 3 || computerWins === 3) {
+        gameOver = true;
+        resultText.textContent = playerWins === 3 ? "Game Over! You Won!" : "Game Over! Computer Won!"
+    }
+  }
+
+  console.log(playerWins);
+  console.log(computerWins);
 }));
 
 
@@ -38,6 +56,7 @@ function checkWinner(){
     }
     else if(computer == "ROCK"){
         return ( player == "PAPER") ? "You Win!" : "You Lose!"
+    
     }
     else if(computer == "PAPER"){
         return ( player == "SCISSORS") ? "You Win!" : "You Lose!"
